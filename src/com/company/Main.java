@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args)
     {
         workClass.startFirstHaomeWork(args);
-       // workClass2.startSecondHomeWork(args);
+        //workClass2.startSecondHomeWork(args);
 
 
     }
