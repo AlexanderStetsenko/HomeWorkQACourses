@@ -10,7 +10,7 @@ import java.util.*;
 public class WorkClass extends ServiceClass
 {
 
-    final Random random = new Random();
+
 
 
 

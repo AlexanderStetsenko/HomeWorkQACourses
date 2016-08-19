@@ -17,25 +17,25 @@ public class WorkClass2 extends ServiceClass
 
         System.out.println("");
         System.out.println("Point 1");
-        System.out.println("");
+        System.out.println("Найти самое короткое и самое длинное число. Вывести найденные числа и их длину.");
         findMaxMinLenghtValue(args);
 
 
         System.out.println("");
         System.out.println("Point 2");
-        System.out.println("");
+        System.out.println("Упорядочить и вывести числа в порядке возрастания (убывания) значений их длины.");
 
         sortByMaxMinNumberOfChars(args);
 
         System.out.println("");
         System.out.println("Point 3");
-        System.out.println("");
+        System.out.println("Вывести на консоль те числа, длина которых меньше (больше) средней, а также длину.");
 
         avarageNumberOfChars(args);
 
         System.out.println("");
         System.out.println("Point 4");
-        System.out.println("");
+        System.out.println("Найти число, в котором число различных цифр минимально. Если таких чисел несколько, найти первое из них.");
 
         findValueWithMinSameChars(args);
 
@@ -45,12 +45,28 @@ public class WorkClass2 extends ServiceClass
 
         System.out.println("");
         System.out.println("Point 6");
-        System.out.println("");
-
+        System.out.println("Найти число, цифры в котором идут в строгом порядке возрастания. Если таких чисел несколько, найти первое из них.");
         findValueIncreasedOneByOne(args);
 
 
+        System.out.println("");
+        System.out.println("Point 7");
+        System.out.println("Найти число, состоящее только из различных цифр. Если таких чисел несколько, найти первое из них.");
+        findValueContainWithDifferentDigits(args);
+
+        System.out.println("");
+        System.out.println("Point 8");
+        System.out.println("Вывести числа от 1 до k в виде матрицы N x N слева направо и сверху вниз.");
+        printMassiveNN(25);
+
+        System.out.println("");
+        System.out.println("Point 9");
+        System.out.println("Ввести с консоли n-размерность матрицы a [n] [n]. Задать значения элементов матрицы в интервале значений от -n до n с помощью датчика случайных чи-");
+        printMassiveNNWithRandomValue(25);
+
     }
+
+
 
     private void findMaxMinLenghtValue(String[] args)
     {
@@ -167,9 +183,77 @@ public class WorkClass2 extends ServiceClass
         int[] values = getIntFromString(args);
         for(int value : values)
         {
+            int[] valuesCharsArray = getCharsOfInteger(value);
+            int[] templateArray =  new int[valuesCharsArray.length];
+            templateArray = Arrays.copyOfRange(valuesCharsArray, 0, valuesCharsArray.length);
+            bubbleSort(templateArray);
+
+            if(Arrays.equals(templateArray, valuesCharsArray) ) {System.out.println(value); break;};
 
         }
     
+    }
+
+    private void findValueContainWithDifferentDigits(String[] args)
+    {
+        int[] values = getIntFromString(args);
+        for(int value : values)
+        {
+            int[] valuesCharsArray = getCharsOfInteger(value);
+            bubbleSort(valuesCharsArray); // if chars are sorted, so same digits will be located one by one
+            Boolean sameDigits = true;
+
+            for (int i = 0; i < valuesCharsArray.length - 1 ; i++)
+            {
+
+                if(valuesCharsArray[i] == valuesCharsArray[i + 1])
+                {
+                    sameDigits = true;
+                    break;
+                }else sameDigits = false;
+
+            }
+            if (sameDigits == false){
+                System.out.println("Value with diff digits " + value );
+                break;
+            }
+        }
+    }
+
+
+    private void printMassiveNN(int k)
+    {
+        int n = (int) Math.sqrt(k);
+        int[][] workArray = new int[n][n];
+        int a = 0;
+
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < n; j++) {
+                a++;
+                workArray[i][j] = a;
+                System.out.print(workArray[i][j] + " ");
+            }
+            System.out.println();
+
+        }
+
+    }
+
+    private void printMassiveNNWithRandomValue(int k)
+    {
+        int n = (int) Math.sqrt(k);
+        int[][] workArray = new int[n][n];
+
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < n; j++) {
+                workArray[i][j] = random.nextInt();
+                System.out.print(workArray[i][j] + " ");
+            }
+            System.out.println();
+
+        }
     }
 
 

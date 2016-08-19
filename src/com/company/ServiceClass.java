@@ -1,5 +1,6 @@
 package com.company;
 
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -7,6 +8,7 @@ import java.util.Scanner;
  */
 public class ServiceClass
 {
+    final Random random = new Random();
     Scanner input = new Scanner(System.in);
     // service methods start
     protected int getNumberOfValueFromConsole()
@@ -81,7 +83,8 @@ public class ServiceClass
     }
 
 
-    protected int[]  getIntFromString(String[] args) {
+    protected int[]  getIntFromString(String[] args)
+    {
         int[] values = new int[args.length];
         for (int i = 0; i < args.length; i++)
         {
@@ -90,5 +93,7 @@ public class ServiceClass
         }
         return values;
     }
+
+
     // service methods end
 }
